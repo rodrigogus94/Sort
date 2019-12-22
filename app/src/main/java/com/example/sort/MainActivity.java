@@ -58,7 +58,7 @@ public class MainActivity extends IntroActivity {
     }
 
     public void btCadastrar(View view){
-
+        startActivity(new Intent());
     }
 
     public void btEntrar(View view){
