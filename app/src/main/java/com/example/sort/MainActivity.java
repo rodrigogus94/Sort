@@ -62,6 +62,6 @@ public class MainActivity extends IntroActivity {
     }
 
     public void btEntrar(View view){
-       // startActivity(new Intent());
+        startActivity(new Intent());
     }
 }
