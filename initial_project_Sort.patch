@@ -1,0 +1,15 @@
+Index: app/src/main/java/com/example/sort/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/sort/MainActivity.java	(date 1576978573000)
++++ app/src/main/java/com/example/sort/MainActivity.java	(date 1576978632000)
+@@ -62,6 +62,6 @@
+     }
+ 
+     public void btEntrar(View view){
+-        startActivity(new Intent());
++       // startActivity(new Intent());
+     }
+ }
