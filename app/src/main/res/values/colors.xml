@@ -10,4 +10,6 @@
     <color name="light_green">#CCFF90</color>
     <color name="light_purple">#B388FF</color>
     <color name="light_blue_bb">#4DD0E1</color>
+    <color name="dark">#000000</color>
+    <color name="light_blue2">#82B1FF</color>
 </resources>

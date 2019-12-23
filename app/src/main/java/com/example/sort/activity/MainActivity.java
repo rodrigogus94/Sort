@@ -1,4 +1,4 @@
-package com.example.sort;
+package com.example.sort.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.sort.R;
+import com.example.sort.activity.CadastroActivity;
+import com.example.sort.activity.LoginActivity;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
 
@@ -58,10 +61,10 @@ public class MainActivity extends IntroActivity {
     }
 
     public void btCadastrar(View view){
-        startActivity(new Intent());
+        startActivity(new Intent(this, CadastroActivity.class));
     }
 
     public void btEntrar(View view){
-        startActivity(new Intent());
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }
