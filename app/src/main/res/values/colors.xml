@@ -12,4 +12,19 @@
     <color name="light_blue_bb">#4DD0E1</color>
     <color name="dark">#000000</color>
     <color name="light_blue2">#82B1FF</color>
+    <color name="blue">#536DFE</color>
+    <color name="green">#4BDA6B</color>
+    <color name="light_green2">#6ECA85</color>
+    <color name="light_red2">#DD4949</color>
+
+    <!-- Cores despesas!-->
+    <color name="colorPrimaryDespesa">#FF706A</color>
+    <color name="colorPrimaryDarkDespesa">#E66560</color>
+    <color name="colorAccentDespesa">#FF706A</color>
+
+    <!-- Cores receitas!-->
+    <color name="colorPrimaryReceita">#00D39E</color>
+    <color name="colorPrimaryDarkReceita">#00BE8B</color>
+    <color name="colorAccentReceita">#00D39E</color>
+
 </resources>
