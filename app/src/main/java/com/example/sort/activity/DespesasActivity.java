@@ -102,11 +102,6 @@ public class DespesasActivity extends AppCompatActivity {
             return false;
         }else {
 
-           /* usuario = new Usuario();
-            usuario.setNome(textoNome);
-            usuario.setEmail(textoEmail);
-            usuario.setSenha(textoSenha);
-            cadastrarUsuario();*/
             return true;
         }
 
