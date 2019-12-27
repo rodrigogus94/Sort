@@ -9,8 +9,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="0dp"
+        android:layout_height="170dp"
         android:background="@color/colorPrimaryReceita"
         android:gravity="center"
         android:orientation="vertical"
@@ -23,18 +23,17 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editValor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:gravity="end"
             android:hint="R$ 00.00"
             android:inputType="numberDecimal"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="end" />
+            android:textSize="30sp" />
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Salário"
-            android:inputType="number|numberDecimal" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -100,12 +99,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Salário mensal"
-            android:inputType="numberDecimal" />
+            android:hint="ex: Salário mensal"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

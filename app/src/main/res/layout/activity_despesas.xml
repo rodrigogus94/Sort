@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:background="@color/colorPrimaryDespesa"
         android:gravity="center"
         android:orientation="vertical"
@@ -23,18 +23,17 @@
         app:layout_constraintVertical_bias="0.0">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editValor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:gravity="end"
             android:hint="R$ 00.00"
             android:inputType="numberDecimal"
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="end" />
+            android:textSize="30sp" />
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -54,6 +53,7 @@
         app:layout_constraintVertical_bias="0.07999998">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ex: 30/04/1995"
@@ -76,10 +76,11 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Salário"
-            android:inputType="number|numberDecimal" />
+            android:hint="ex: Salário"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -98,14 +99,15 @@
         app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Salário mensal"
-            android:inputType="numberDecimal" />
+            android:hint="ex: Salário mensal"
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/fabSalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -113,6 +115,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_check_white_24dp" />
+        app:srcCompat="@drawable/ic_check_white_24dp"
+        android:onClick="salvarDespesa"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
