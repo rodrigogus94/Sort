@@ -29,7 +29,7 @@ public class ReceitasActivity extends AppCompatActivity {
     private Movimentacao movimentacao;
     private DatabaseReference firebaseRef = ConfiguracaoFireBase.getFirebaseDatabase();
     private FirebaseAuth autenticacao = ConfiguracaoFireBase.getFirebaseAutenticacao();
-    private Double receitaTotal, despesaTotal;
+    private Double receitaTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,12 +63,8 @@ public class ReceitasActivity extends AppCompatActivity {
             Double receitaAtualizado = receitaTotal + valorRecuperado;
             atualizarReceita(receitaAtualizado);
             movimentacao.salvarMovimentacao(data);
+            finish();
 
-           /* if(despesaTotal >= 0){
-                Double novaReceita = receitaTotal - despesaTotal;
-                atualizarReceitaComDespesa(novaReceita);
-            }
-*/
 
         }
     }
@@ -114,7 +110,7 @@ public class ReceitasActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Usuario usuario = dataSnapshot.getValue(Usuario.class);
                 receitaTotal = usuario.getReceitaTotal();
-               // despesaTotal = usuario.getDespesaTotal();
+
 
             }
 
@@ -134,14 +130,6 @@ public class ReceitasActivity extends AppCompatActivity {
         usuarioRef.child("receitaTotal").setValue(receita);
     }
 
-    public void atualizarReceitaComDespesa(Double novaReceita){
 
-        String emailUsuario = autenticacao.getCurrentUser().getEmail();
-        String idUsuario = Base64Custom.codificaBase64(emailUsuario);
-        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
-
-        usuarioRef.child("receitaTotal").setValue(novaReceita);
-
-    }
 
 }
