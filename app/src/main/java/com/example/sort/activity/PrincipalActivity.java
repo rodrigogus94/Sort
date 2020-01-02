@@ -1,5 +1,6 @@
 package com.example.sort.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -26,6 +28,7 @@ import android.widget.Adapter;
 import android.widget.CalendarView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sort.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,6 +60,7 @@ public class PrincipalActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterMovimentacao adapterMovimentacao;
     private List<Movimentacao> movimentacoes = new ArrayList<>();
+    private Movimentacao movimentacao;
     private DatabaseReference movimentacaoRef;
     private String mesAnoSelecionado;
 
@@ -104,11 +108,69 @@ public class PrincipalActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                Log.i("swipe", "Item foi arrastado");
+                excluirMovimentacao(viewHolder);
             }
         };
 
         new ItemTouchHelper(callback).attachToRecyclerView(recyclerView);
+    }
+
+    public void excluirMovimentacao(final RecyclerView.ViewHolder viewHolder){
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+
+        //Confirando o AlertDialog
+        alertDialog.setTitle("Excluir a movimentação da conta ");
+        alertDialog.setMessage("Você tem certaza que desaja realmente excluir essa movimentação da sua conta?");
+        alertDialog.setCancelable(false);
+
+        alertDialog.setPositiveButton("Confimar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int position = viewHolder.getAdapterPosition();
+                movimentacao = movimentacoes.get(position);
+
+                String emailUsuario = autenticacao.getCurrentUser().getEmail();
+                String idUsuario = Base64Custom.codificaBase64( emailUsuario );
+                movimentacaoRef = fireBaseRef.child("movimentacao")
+                        .child( idUsuario )
+                        .child( mesAnoSelecionado );
+
+                movimentacaoRef.child(movimentacao.getKey()).removeValue();
+                adapterMovimentacao.notifyItemRemoved(position);
+                atualizaSaldo();
+            }
+        });
+
+        alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(PrincipalActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
+                adapterMovimentacao.notifyDataSetChanged();
+            }
+        });
+
+        AlertDialog alert = alertDialog.create();
+        alert.show();
+
+    }
+
+    public void atualizaSaldo(){
+
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificaBase64(emailUsuario);
+        usuarioRef = fireBaseRef.child("usuarios").child(idUsuario);
+
+        if(movimentacao.getTipo().equals("r")){
+            receitaTotal -= movimentacao.getValor();
+            usuarioRef.child("receitaTotal").setValue(receitaTotal);
+        }
+
+        if(movimentacao.getTipo().equals("d")){
+            despesaTotal -= movimentacao.getValor();
+            usuarioRef.child("despesaTotal").setValue(despesaTotal);
+        }
+
     }
 
     public void recuperarMovimentacoes(){
@@ -127,6 +189,7 @@ public class PrincipalActivity extends AppCompatActivity {
                 for (DataSnapshot dados: dataSnapshot.getChildren() ){
 
                     Movimentacao movimentacao = dados.getValue( Movimentacao.class );
+                    movimentacao.setKey(dados.getKey());
                     movimentacoes.add( movimentacao );
 
                 }
