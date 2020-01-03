@@ -34,6 +34,7 @@
             android:textAlignment="textEnd"
             android:textColor="@android:color/white"
             android:textSize="30sp" />
+
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -56,8 +57,9 @@
             android:id="@+id/editData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ex: 30/04/1995"
+            android:hint="Data"
             android:inputType="date" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -79,8 +81,9 @@
             android:id="@+id/editCategoria"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ex: Salário"
+            android:hint="Categoria"
             android:inputType="text" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -102,7 +105,7 @@
             android:id="@+id/editDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ex: Salário mensal"
+            android:hint="Descrição"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
